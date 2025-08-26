@@ -1,5 +1,7 @@
 'use client';
-
+/**
+ * 动画组件
+ */
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { resumeConfig } from '../../src/store/resumeConfig';

@@ -4,13 +4,13 @@
   max-width: 1200px;
   margin: 0 auto;
   color: white;
-  overflow-y: auto;
-  height: 100%;
+  /* 移除重复的滚动设置，由父容器 .contentWrapper 处理 */
   scrollbar-width: thin;
   scrollbar-color: rgba(135, 206, 235, 0.5) transparent;
 }
 
-.resumeContent::-webkit-scrollbar {
+/* 移除重复的滚动条样式，由父容器处理 */
+/* .resumeContent::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -25,7 +25,7 @@
 
 .resumeContent::-webkit-scrollbar-thumb:hover {
   background: rgba(135, 206, 235, 0.7);
-}
+} */
 
 /* 基本信息 */
 .basicInfo {

@@ -1,12 +1,5 @@
-/* 导入重置样式 */
-@import "./reset.css";
-
-/* 导入 Tailwind CSS */
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
-
-/* 导入 ant-design 样式 */
-@import "antd/dist/antd.css";
+/* 导入 Tailwind CSS v4 */
+@import "tailwindcss";
 
 /* 全局样式 */
 :root {
@@ -28,21 +21,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* 防止页面滚动 */
+  overflow: hidden; /* 防止页面整体滚动，但允许内容区域滚动 */
+}
+
+/* 内容区域滚动设置 */
+.content {
+  overflow-y: auto; /* 允许内容区域纵向滚动 */
+  overflow-x: hidden; /* 防止横向滚动 */
 }
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
-  width: 0;
+  width: 6px; /* 显示滚动条 */
   height: 0;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* 选择文本样式 */

@@ -26,9 +26,6 @@ const ClientLayout: FC<ClientLayoutProps> = ({ children, className }) => {
           </div>
         </Content>
       </Layout>
-      <Footer className={$styles.footer}>
-        <div className={$styles.footerContent}>Footer</div>
-      </Footer>
     </Layout>
   );
 };

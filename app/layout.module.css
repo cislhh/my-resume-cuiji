@@ -8,7 +8,7 @@
 /* Header 区域 - 浅蓝色背景 */
 .header {
   background: #87ceeb !important;
-  height: 16vh !important;
+  height: 6vh !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,10 +51,11 @@
   background: #4169e1 !important;
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 改为顶部对齐，允许内容滚动 */
   justify-content: center;
   padding: 0;
   border: none;
+  overflow: hidden; /* 防止内容溢出到外部 */
 }
 
 .contentWrapper {
@@ -62,27 +63,36 @@
   font-size: 1.5rem;
   font-weight: 600;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 6vh); /* 使用固定高度，确保滚动条能正确显示 */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-y: auto; /* 允许纵向滚动 */
+  overflow-x: hidden; /* 防止横向滚动 */
+
+  /* 滚动条样式 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-/* Footer 区域 - 浅蓝色背景 */
-.footer {
-  background: #87ceeb !important;
-  height: 16vh !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: none;
+.contentWrapper::-webkit-scrollbar {
+  width: 8px;
 }
 
-.footerContent {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
+.contentWrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.contentWrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.contentWrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* 响应式设计 */
@@ -103,7 +113,13 @@
   }
 
   .content {
-    height: 53vh;
+    min-height: 53vh; /* 改为最小高度，允许内容扩展 */
+    overflow: hidden; /* 防止内容溢出到外部 */
+  }
+
+  .contentWrapper {
+    height: 53vh; /* 移动端使用固定高度 */
+    overflow-y: auto; /* 确保移动端也能滚动 */
   }
 
   .header,
@@ -111,4 +127,3 @@
     height: 16vh !important;
   }
 }
-
