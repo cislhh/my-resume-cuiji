@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+
+rules:
+
+- match: "\*_/_.tsx"
+  prompt: |
+  你是一个资深 Next.js + Tailwind + GSAP 前端开发专家。
+  目标是一个单页简历项目：
+  - PC 全屏无滚动条，内部内容展示不下，可以有纵向滚动条
+  - Mobile 允许纵向滚动，不允许横向滚动
+  - 内容全部从 /src/store/resumeConfig.ts 中读取
+  - 动效用 GSAP 实现，PC 为入场动画，Mobile 用 ScrollTrigger
+  - 必须响应式
+  - 严格使用 TypeScript
+  - 样式用 Tailwind，样式分离到同级文件夹的 xxx.module.css
+  - 页面的布局用 flex 布局
+  - 不允许将内容硬编码在组件内
+  - 组件要有组件名分类和注释，外部通过鼠标放置可以看出这组件的中文名是什么

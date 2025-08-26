@@ -1,0 +1,559 @@
+/* 简历内容容器 */
+.resumeContent {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(135, 206, 235, 0.5) transparent;
+}
+
+.resumeContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.resumeContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.resumeContent::-webkit-scrollbar-thumb {
+  background: rgba(135, 206, 235, 0.5);
+  border-radius: 4px;
+}
+
+.resumeContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(135, 206, 235, 0.7);
+}
+
+/* 基本信息 */
+.basicInfo {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #87ceeb, #4169e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(135, 206, 235, 0.3);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #87ceeb;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+}
+
+.summary {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.meta span {
+  background: rgba(135, 206, 235, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(135, 206, 235, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.meta span:hover {
+  background: rgba(135, 206, 235, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(135, 206, 235, 0.3);
+}
+
+/* 联系方式 */
+.contact {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.contactTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #87ceeb;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.contactItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contactItems span {
+  background: rgba(65, 105, 225, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  border: 1px solid rgba(65, 105, 225, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.contactItems span:hover {
+  background: rgba(65, 105, 225, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(65, 105, 225, 0.3);
+}
+
+.contactItems a {
+  color: #87ceeb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contactItems a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+/* 技能 */
+.skills {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.skillsTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #87ceeb;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.skillItem {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.skillItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skillName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #87ceeb;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.skillLevel {
+  color: #ffd700;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.skillDescription {
+  color: #c0c0c0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* 工作经验 */
+.experiences {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.experiencesTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #87ceeb;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experienceItem {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #87ceeb;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.experienceItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.experienceHeader {
+  margin-bottom: 1rem;
+}
+
+.company {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #87ceeb;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.position {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-right: 1rem;
+}
+
+.period {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
+.descriptionList {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.descriptionList li {
+  margin-bottom: 0.5rem;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+.technologies,
+.achievements {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(65, 105, 225, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.technologies strong,
+.achievements strong {
+  color: #87ceeb;
+  margin-right: 0.5rem;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.achievements ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.achievements li {
+  color: #d0d0d0;
+  margin-bottom: 0.3rem;
+}
+
+/* 项目经验 */
+.projects {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.projectsTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #87ceeb;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projectItem {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #4169e1;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.projectItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.projectHeader {
+  margin-bottom: 1rem;
+}
+
+.projectName {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4169e1;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-shadow: 0 0 10px rgba(65, 105, 225, 0.3);
+}
+
+.projectRole {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-right: 1rem;
+}
+
+.projectPeriod {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
+.projectDescription {
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.projectTech,
+.projectHighlights {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(135, 206, 235, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.projectTech strong,
+.projectHighlights strong {
+  color: #87ceeb;
+  margin-right: 0.5rem;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.projectHighlights ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.projectHighlights li {
+  color: #d0d0d0;
+  margin-bottom: 0.3rem;
+}
+
+/* 教育背景 */
+.education {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.educationTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #87ceeb;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+}
+
+.educationItem {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #87ceeb;
+  backdrop-filter: blur(10px);
+}
+
+.educationItem h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #87ceeb;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.degree {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.period {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+/* 其他信息 */
+.otherInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.certifications,
+.languages,
+.interests {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.certifications:hover,
+.languages:hover,
+.interests:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.certifications h3,
+.languages h3,
+.interests h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #87ceeb;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.3);
+}
+
+.certifications ul,
+.languages ul,
+.interests ul {
+  padding-left: 1.5rem;
+}
+
+.certifications li,
+.languages li,
+.interests li {
+  color: #d0d0d0;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .resumeContent {
+    padding: 1rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .otherInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .contact,
+  .skills,
+  .experiences,
+  .projects,
+  .education {
+    padding: 1.5rem;
+  }
+
+  .experienceItem,
+  .projectItem,
+  .educationItem {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,114 @@
+/* 主布局容器 */
+.mainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header 区域 - 浅蓝色背景 */
+.header {
+  background: #87ceeb !important;
+  height: 16vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+}
+
+.headerContent {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* 中间区域容器 */
+.middleSection {
+  flex: 1;
+  display: flex;
+  min-height: 68vh;
+}
+
+/* Sider 区域 - 深蓝色背景 */
+.sider {
+  background: #4169e1 !important;
+  width: 20% !important;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.siderContent {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Content 区域 - 深蓝色背景 */
+.content {
+  background: #4169e1 !important;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+}
+
+.contentWrapper {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer 区域 - 浅蓝色背景 */
+.footer {
+  background: #87ceeb !important;
+  height: 16vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+}
+
+.footerContent {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .mainLayout {
+    min-height: 100vh;
+  }
+
+  .middleSection {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .sider {
+    width: 100% !important;
+    max-width: none;
+    height: 15vh !important;
+  }
+
+  .content {
+    height: 53vh;
+  }
+
+  .header,
+  .footer {
+    height: 16vh !important;
+  }
+}
+
