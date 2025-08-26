@@ -107,23 +107,15 @@
   }
 
   .sider {
-    width: 100% !important;
-    max-width: none;
-    height: 15vh !important;
+    display: none;
   }
 
   .content {
-    min-height: 53vh; /* 改为最小高度，允许内容扩展 */
     overflow: hidden; /* 防止内容溢出到外部 */
   }
 
   .contentWrapper {
-    height: 53vh; /* 移动端使用固定高度 */
+    height: calc(100vh - 6vh);
     overflow-y: auto; /* 确保移动端也能滚动 */
-  }
-
-  .header,
-  .footer {
-    height: 16vh !important;
   }
 }
