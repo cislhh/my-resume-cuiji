@@ -3,6 +3,73 @@
  * 包含所有简历内容的配置信息
  */
 
+// Section 标识符常量 - 统一管理所有 section 的 ID
+export const SECTION_IDS = {
+  BASIC_INFO: "basic-info",
+  CONTACT: "contact",
+  SKILLS: "skills",
+  EXPERIENCES: "experiences",
+  PROJECTS: "projects",
+  EDUCATION: "education",
+  OTHER_INFO: "other-info",
+} as const;
+
+// Section 配置对象 - 配置驱动的导航菜单
+export interface SectionConfig {
+  id: string;
+  label: string;
+  icon: string;
+  order: number;
+  hasChildren?: boolean;
+}
+
+export const RESUME_SECTIONS_CONFIG: Record<string, SectionConfig> = {
+  [SECTION_IDS.BASIC_INFO]: {
+    id: SECTION_IDS.BASIC_INFO,
+    label: "基本信息",
+    icon: "UserOutlined",
+    order: 1,
+  },
+  [SECTION_IDS.CONTACT]: {
+    id: SECTION_IDS.CONTACT,
+    label: "联系方式",
+    icon: "ContactsOutlined",
+    order: 2,
+  },
+  [SECTION_IDS.SKILLS]: {
+    id: SECTION_IDS.SKILLS,
+    label: "技能专长",
+    icon: "ToolOutlined",
+    order: 3,
+  },
+  [SECTION_IDS.EXPERIENCES]: {
+    id: SECTION_IDS.EXPERIENCES,
+    label: "工作经验",
+    icon: "BankOutlined",
+    order: 4,
+    hasChildren: true,
+  },
+  [SECTION_IDS.PROJECTS]: {
+    id: SECTION_IDS.PROJECTS,
+    label: "项目经验",
+    icon: "ProjectOutlined",
+    order: 5,
+    hasChildren: true,
+  },
+  [SECTION_IDS.EDUCATION]: {
+    id: SECTION_IDS.EDUCATION,
+    label: "教育背景",
+    icon: "BookOutlined",
+    order: 6,
+  },
+  [SECTION_IDS.OTHER_INFO]: {
+    id: SECTION_IDS.OTHER_INFO,
+    label: "其他信息",
+    icon: "TrophyOutlined",
+    order: 7,
+  },
+} as const;
+
 export interface Skill {
   name: string;
   level: number; // 1-5级

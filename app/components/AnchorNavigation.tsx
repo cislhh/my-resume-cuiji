@@ -12,10 +12,21 @@ import {
   BookOutlined, 
   TrophyOutlined 
 } from '@ant-design/icons';
-import { resumeConfig } from '../../src/store/resumeConfig';
+import { resumeConfig, RESUME_SECTIONS_CONFIG, SECTION_IDS } from '../../src/store/resumeConfig';
 import styles from './AnchorNavigation.module.css';
 
 const { Panel } = Collapse;
+
+// 图标映射对象
+const iconMap = {
+  UserOutlined,
+  ContactsOutlined,
+  ToolOutlined,
+  BankOutlined,
+  ProjectOutlined,
+  BookOutlined,
+  TrophyOutlined,
+};
 
 interface AnchorNavigationProps {
   onNavigate: (sectionId: string) => void;
@@ -23,61 +34,54 @@ interface AnchorNavigationProps {
 
 const AnchorNavigation: React.FC<AnchorNavigationProps> = ({ onNavigate }) => {
   // 控制哪些菜单项是展开状态
-  const [expandedKeys, setExpandedKeys] = useState<string[]>(['experiences', 'projects']);
+  const [expandedKeys, setExpandedKeys] = useState<string[]>([SECTION_IDS.EXPERIENCES, SECTION_IDS.PROJECTS]);
+
+  // 根据配置生成导航菜单项
+  const generateMenuItems = (): MenuProps['items'] => {
+    return Object.values(RESUME_SECTIONS_CONFIG)
+      .sort((a, b) => a.order - b.order)
+      .map(section => {
+        const IconComponent = iconMap[section.icon as keyof typeof iconMap];
+        
+        if (section.hasChildren) {
+          // 有子菜单的项（工作经验、项目经验）
+          if (section.id === SECTION_IDS.EXPERIENCES) {
+            return {
+              key: section.id,
+              icon: <IconComponent />,
+              label: section.label,
+              children: resumeConfig.experiences.map((exp, index) => ({
+                key: `experience-${index}`,
+                label: exp.company,
+                onClick: () => onNavigate(`experience-${index}`),
+              })),
+            };
+          } else if (section.id === SECTION_IDS.PROJECTS) {
+            return {
+              key: section.id,
+              icon: <IconComponent />,
+              label: section.label,
+              children: resumeConfig.projects.map((project, index) => ({
+                key: `project-${index}`,
+                label: project.name,
+                onClick: () => onNavigate(`project-${index}`),
+              })),
+            };
+          }
+        }
+        
+        // 普通菜单项
+        return {
+          key: section.id,
+          icon: <IconComponent />,
+          label: section.label,
+          onClick: () => onNavigate(section.id),
+        };
+      });
+  };
 
   // 导航菜单项配置
-  const menuItems: MenuProps['items'] = [
-    {
-      key: 'basic-info',
-      icon: <UserOutlined />,
-      label: '基本信息',
-      onClick: () => onNavigate('basic-info'),
-    },
-    {
-      key: 'contact',
-      icon: <ContactsOutlined />,
-      label: '联系方式',
-      onClick: () => onNavigate('contact'),
-    },
-    {
-      key: 'skills',
-      icon: <ToolOutlined />,
-      label: '技能专长',
-      onClick: () => onNavigate('skills'),
-    },
-    {
-      key: 'experiences',
-      icon: <BankOutlined />,
-      label: '工作经验',
-      children: resumeConfig.experiences.map((exp, index) => ({
-        key: `experience-${index}`,
-        label: exp.company,
-        onClick: () => onNavigate(`experience-${index}`), // 跳转到具体的公司
-      })),
-    },
-    {
-      key: 'projects',
-      icon: <ProjectOutlined />,
-      label: '项目经验',
-      children: resumeConfig.projects.map((project, index) => ({
-        key: `project-${index}`,
-        label: project.name,
-        onClick: () => onNavigate(`project-${index}`), // 跳转到具体的项目
-      })),
-    },
-    {
-      key: 'education',
-      icon: <BookOutlined />,
-      label: '教育背景',
-      onClick: () => onNavigate('education'),
-    },
-    {
-      key: 'other-info',
-      icon: <TrophyOutlined />,
-      label: '其他信息',
-      onClick: () => onNavigate('other-info'),
-    },
-  ];
+  const menuItems: MenuProps['items'] = generateMenuItems();
 
   // 处理菜单点击事件
   const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
@@ -87,7 +91,7 @@ const AnchorNavigation: React.FC<AnchorNavigationProps> = ({ onNavigate }) => {
     }
     
     // 如果是父菜单项（experiences 或 projects），切换展开状态
-    if (['experiences', 'projects'].includes(key)) {
+    if (key === SECTION_IDS.EXPERIENCES || key === SECTION_IDS.PROJECTS) {
       setExpandedKeys(prev => 
         prev.includes(key) 
           ? prev.filter(k => k !== key)  // 如果已展开，则收起
@@ -123,7 +127,7 @@ const AnchorNavigation: React.FC<AnchorNavigationProps> = ({ onNavigate }) => {
           ghost
           className={styles.mobileCollapsePanel}
         >
-          <Panel header="工作经验" key="experiences">
+          <Panel header={RESUME_SECTIONS_CONFIG[SECTION_IDS.EXPERIENCES].label} key={SECTION_IDS.EXPERIENCES}>
             <div className={styles.mobileSubItems}>
               {resumeConfig.experiences.map((exp, index) => (
                 <div 
@@ -138,7 +142,7 @@ const AnchorNavigation: React.FC<AnchorNavigationProps> = ({ onNavigate }) => {
             </div>
           </Panel>
           
-          <Panel header="项目经验" key="projects">
+          <Panel header={RESUME_SECTIONS_CONFIG[SECTION_IDS.PROJECTS].label} key={SECTION_IDS.PROJECTS}>
             <div className={styles.mobileSubItems}>
               {resumeConfig.projects.map((project, index) => (
                 <div 

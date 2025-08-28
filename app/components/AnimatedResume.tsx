@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { resumeConfig } from '../../src/store/resumeConfig';
+import { resumeConfig, SECTION_IDS } from '../../src/store/resumeConfig';
 import { useSectionContext } from './ClientLayout';
 import styles from '../page.module.css';
 
@@ -95,10 +95,10 @@ const AnimatedResume = () => {
     <div ref={containerRef} className={styles.resumeContent}>
       {/* 基本信息 */}
       <section 
-        id="basic-info"
+        id={SECTION_IDS.BASIC_INFO}
         ref={(el) => {
           addSectionRef(el, 0);
-          registerSection('basic-info', el);
+          registerSection(SECTION_IDS.BASIC_INFO, el);
         }} 
         className={styles.basicInfo}
       >
@@ -114,10 +114,10 @@ const AnimatedResume = () => {
 
       {/* 联系方式 */}
       <section 
-        id="contact"
+        id={SECTION_IDS.CONTACT}
         ref={(el) => {
           addSectionRef(el, 1);
-          registerSection('contact', el);
+          registerSection(SECTION_IDS.CONTACT, el);
         }} 
         className={styles.contact}
       >
@@ -133,10 +133,10 @@ const AnimatedResume = () => {
 
       {/* 技能专长 */}
       <section 
-        id="skills"
+        id={SECTION_IDS.SKILLS}
         ref={(el) => {
           addSectionRef(el, 2);
-          registerSection('skills', el);
+          registerSection(SECTION_IDS.SKILLS, el);
         }} 
         className={styles.skills}
       >
@@ -156,10 +156,10 @@ const AnimatedResume = () => {
 
       {/* 工作经验 */}
       <section 
-        id="experiences"
+        id={SECTION_IDS.EXPERIENCES}
         ref={(el) => {
           addSectionRef(el, 3);
-          registerSection('experiences', el);
+          registerSection(SECTION_IDS.EXPERIENCES, el);
         }} 
         className={styles.experiences}
       >
@@ -201,10 +201,10 @@ const AnimatedResume = () => {
 
       {/* 项目经验 */}
       <section 
-        id="projects"
+        id={SECTION_IDS.PROJECTS}
         ref={(el) => {
           addSectionRef(el, 4);
-          registerSection('projects', el);
+          registerSection(SECTION_IDS.PROJECTS, el);
         }} 
         className={styles.projects}
       >
@@ -242,10 +242,10 @@ const AnimatedResume = () => {
 
       {/* 教育背景 */}
       <section 
-        id="education"
+        id={SECTION_IDS.EDUCATION}
         ref={(el) => {
           addSectionRef(el, 5);
-          registerSection('education', el);
+          registerSection(SECTION_IDS.EDUCATION, el);
         }} 
         className={styles.education}
       >
@@ -262,10 +262,10 @@ const AnimatedResume = () => {
 
       {/* 其他信息 */}
       <section 
-        id="other-info"
+        id={SECTION_IDS.OTHER_INFO}
         ref={(el) => {
           addSectionRef(el, 6);
-          registerSection('other-info', el);
+          registerSection(SECTION_IDS.OTHER_INFO, el);
         }} 
         className={styles.otherInfo}
       >

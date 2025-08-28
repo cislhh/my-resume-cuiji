@@ -13,6 +13,9 @@ interface SectionContextType {
   registerSection: (id: string, element: HTMLElement | null) => void;
   scrollToSection: (sectionId: string) => void;
 }
+interface ClientLayoutProps extends PropsWithChildren {
+  className?: string;
+}
 
 const SectionContext = createContext<SectionContextType | null>(null);
 
@@ -25,9 +28,6 @@ export const useSectionContext = () => {
   return context;
 };
 
-interface ClientLayoutProps extends PropsWithChildren {
-  className?: string;
-}
 
 const ClientLayout: FC<ClientLayoutProps> = ({ children, className }) => {
   // 使用 useRef 存储所有 section 的引用
