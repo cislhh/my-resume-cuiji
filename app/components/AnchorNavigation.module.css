@@ -1,0 +1,231 @@
+/* 导航容器 */
+.navigationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+/* 导航头部 */
+.navigationHeader {
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navigationHeader h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #87ceeb;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+.navigationHeader p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 导航菜单 */
+.navigationMenu {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff; /* 改为纯白色，提高对比度 */
+}
+
+/* 自定义菜单样式 */
+.navigationMenu :global(.ant-menu) {
+  background: transparent;
+  border: none;
+}
+
+.navigationMenu :global(.ant-menu-item) {
+  margin: 0;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  color: #ffffff; /* 确保菜单项文字为白色 */
+}
+
+.navigationMenu :global(.ant-menu-item:hover) {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb !important; /* 悬停时使用主题色 */
+}
+
+.navigationMenu :global(.ant-menu-item-selected) {
+  background: rgba(135, 206, 235, 0.3);
+  color: #87ceeb !important; /* 选中时使用主题色 */
+  border-right: 3px solid #87ceeb;
+}
+
+.navigationMenu :global(.ant-menu-submenu) {
+  background: transparent;
+}
+
+.navigationMenu :global(.ant-menu-submenu-title) {
+  height: 48px;
+  line-height: 48px;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: #ffffff; /* 确保子菜单标题为白色 */
+}
+
+.navigationMenu :global(.ant-menu-submenu-title:hover) {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb !important; /* 悬停时使用主题色 */
+}
+
+.navigationMenu :global(.ant-menu-submenu-open > .ant-menu-submenu-title) {
+  background: rgba(135, 206, 235, 0.25);
+  color: #87ceeb !important; /* 展开时使用主题色 */
+}
+
+.navigationMenu :global(.ant-menu-sub) {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.navigationMenu :global(.ant-menu-sub .ant-menu-item) {
+  padding-left: 48px !important;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0.9rem;
+  color: #e0e0e0; /* 子菜单项使用浅灰色 */
+}
+
+.navigationMenu :global(.ant-menu-sub .ant-menu-item:hover) {
+  background: rgba(135, 206, 235, 0.15);
+  color: #87ceeb !important; /* 悬停时使用主题色 */
+}
+
+.navigationMenu :global(.ant-menu-sub .ant-menu-item-selected) {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb !important; /* 选中时使用主题色 */
+}
+
+/* 展开图标 */
+.expandIcon {
+  color: #87ceeb;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* 移动端折叠面板 */
+.mobileCollapse {
+  display: none;
+}
+
+.mobileCollapsePanel {
+  background: transparent;
+  border: none;
+}
+
+.mobileCollapsePanel :global(.ant-collapse-header) {
+  color: white !important;
+  font-weight: 600;
+  padding: 1rem !important;
+  background: rgba(135, 206, 235, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.mobileCollapsePanel :global(.ant-collapse-content) {
+  background: transparent;
+  border: none;
+}
+
+.mobileCollapsePanel :global(.ant-collapse-content-box) {
+  padding: 0 0 0 1rem !important;
+}
+
+/* 移动端子项 */
+.mobileSubItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileSubItem {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileSubItem:hover {
+  background: rgba(135, 206, 235, 0.1);
+  border-color: rgba(135, 206, 235, 0.3);
+  transform: translateX(4px);
+}
+
+.companyName,
+.projectName {
+  display: block;
+  font-weight: 600;
+  color: #87ceeb;
+  margin-bottom: 0.25rem;
+}
+
+.position,
+.projectRole {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .navigationMenu {
+    display: none;
+  }
+
+  .mobileCollapse {
+    display: block;
+    padding: 1rem;
+  }
+
+  .navigationHeader {
+    padding: 1rem;
+  }
+
+  .navigationHeader h3 {
+    font-size: 1.1rem;
+  }
+
+  .navigationHeader p {
+    font-size: 0.8rem;
+  }
+}
+
+/* 动画效果 */
+.navigationContainer {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 悬停效果 */
+.navigationContainer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}

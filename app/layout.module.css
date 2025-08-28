@@ -33,11 +33,13 @@
 .sider {
   background: #4169e1 !important;
   width: 20% !important;
-  max-width: 250px;
+  max-width: 280px; /* 增加宽度以适应导航内容 */
+  min-width: 250px; /* 设置最小宽度 */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch; /* 改为拉伸对齐 */
+  justify-content: stretch;
   border: none;
+  padding: 1rem; /* 添加内边距 */
 }
 
 .siderContent {

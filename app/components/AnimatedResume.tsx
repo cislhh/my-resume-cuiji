@@ -5,11 +5,13 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { resumeConfig } from '../../src/store/resumeConfig';
+import { useSectionContext } from './ClientLayout';
 import styles from '../page.module.css';
 
 const AnimatedResume = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+  const { registerSection } = useSectionContext();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -93,7 +95,11 @@ const AnimatedResume = () => {
     <div ref={containerRef} className={styles.resumeContent}>
       {/* 基本信息 */}
       <section 
-        ref={(el) => addSectionRef(el, 0)} 
+        id="basic-info"
+        ref={(el) => {
+          addSectionRef(el, 0);
+          registerSection('basic-info', el);
+        }} 
         className={styles.basicInfo}
       >
         <h1 className={styles.name}>{resumeConfig.basicInfo.name}</h1>
@@ -108,7 +114,11 @@ const AnimatedResume = () => {
 
       {/* 联系方式 */}
       <section 
-        ref={(el) => addSectionRef(el, 1)} 
+        id="contact"
+        ref={(el) => {
+          addSectionRef(el, 1);
+          registerSection('contact', el);
+        }} 
         className={styles.contact}
       >
         <h3 className={styles.contactTitle}>联系方式</h3>
@@ -121,9 +131,13 @@ const AnimatedResume = () => {
         </div>
       </section>
 
-      {/* 技能 */}
+      {/* 技能专长 */}
       <section 
-        ref={(el) => addSectionRef(el, 2)} 
+        id="skills"
+        ref={(el) => {
+          addSectionRef(el, 2);
+          registerSection('skills', el);
+        }} 
         className={styles.skills}
       >
         <h3 className={styles.skillsTitle}>技能专长</h3>
@@ -134,9 +148,7 @@ const AnimatedResume = () => {
                 <span className={styles.skillName}>{skill.name}</span>
                 <span className={styles.skillLevel}>{'★'.repeat(skill.level)}</span>
               </div>
-              {skill.description && (
-                <p className={styles.skillDescription}>{skill.description}</p>
-              )}
+              <p className={styles.skillDescription}>{skill.description}</p>
             </div>
           ))}
         </div>
@@ -144,31 +156,40 @@ const AnimatedResume = () => {
 
       {/* 工作经验 */}
       <section 
-        ref={(el) => addSectionRef(el, 3)} 
+        id="experiences"
+        ref={(el) => {
+          addSectionRef(el, 3);
+          registerSection('experiences', el);
+        }} 
         className={styles.experiences}
       >
         <h3 className={styles.experiencesTitle}>工作经验</h3>
         <div className={styles.experienceList}>
-          {resumeConfig.experiences.map((exp, index) => (
-            <div key={index} className={styles.experienceItem}>
+          {resumeConfig.experiences.map((experience, index) => (
+            <div 
+              key={index} 
+              id={`experience-${index}`}
+              ref={(el) => registerSection(`experience-${index}`, el)}
+              className={styles.experienceItem}
+            >
               <div className={styles.experienceHeader}>
-                <h4 className={styles.company}>{exp.company}</h4>
-                <span className={styles.position}>{exp.position}</span>
-                <span className={styles.period}>{exp.startDate} - {exp.endDate || '至今'}</span>
+                <h4 className={styles.company}>{experience.company}</h4>
+                <span className={styles.position}>{experience.position}</span>
+                <span className={styles.period}>{experience.startDate} - {experience.endDate || '进行中'}</span>
               </div>
               <ul className={styles.descriptionList}>
-                {exp.description.map((desc, descIndex) => (
+                {experience.description.map((desc, descIndex) => (
                   <li key={descIndex}>{desc}</li>
                 ))}
               </ul>
               <div className={styles.technologies}>
                 <strong>技术栈：</strong>
-                {exp.technologies.join(', ')}
+                {experience.technologies.join(', ')}
               </div>
               <div className={styles.achievements}>
                 <strong>主要成就：</strong>
                 <ul>
-                  {exp.achievements.map((achievement, achievementIndex) => (
+                  {experience.achievements.map((achievement, achievementIndex) => (
                     <li key={achievementIndex}>{achievement}</li>
                   ))}
                 </ul>
@@ -180,13 +201,22 @@ const AnimatedResume = () => {
 
       {/* 项目经验 */}
       <section 
-        ref={(el) => addSectionRef(el, 4)} 
+        id="projects"
+        ref={(el) => {
+          addSectionRef(el, 4);
+          registerSection('projects', el);
+        }} 
         className={styles.projects}
       >
         <h3 className={styles.projectsTitle}>项目经验</h3>
         <div className={styles.projectList}>
           {resumeConfig.projects.map((project, index) => (
-            <div key={index} className={styles.projectItem}>
+            <div 
+              key={index} 
+              id={`project-${index}`}
+              ref={(el) => registerSection(`project-${index}`, el)}
+              className={styles.projectItem}
+            >
               <div className={styles.projectHeader}>
                 <h4 className={styles.projectName}>{project.name}</h4>
                 <span className={styles.projectRole}>{project.role}</span>
@@ -212,7 +242,11 @@ const AnimatedResume = () => {
 
       {/* 教育背景 */}
       <section 
-        ref={(el) => addSectionRef(el, 5)} 
+        id="education"
+        ref={(el) => {
+          addSectionRef(el, 5);
+          registerSection('education', el);
+        }} 
         className={styles.education}
       >
         <h3 className={styles.educationTitle}>教育背景</h3>
@@ -228,7 +262,11 @@ const AnimatedResume = () => {
 
       {/* 其他信息 */}
       <section 
-        ref={(el) => addSectionRef(el, 6)} 
+        id="other-info"
+        ref={(el) => {
+          addSectionRef(el, 6);
+          registerSection('other-info', el);
+        }} 
         className={styles.otherInfo}
       >
         {resumeConfig.certifications && (
