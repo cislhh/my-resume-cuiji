@@ -105,6 +105,8 @@ export interface Project {
   endDate?: string;
   link?: string;
   highlights: string[];
+  hasDetails?: boolean; // 是否有详细页面
+  detailId?: string; // 详情页面ID，对应projectConfig中的项目ID
 }
 
 export interface Contact {
@@ -375,7 +377,7 @@ export const resumeConfig: ResumeConfig = {
     {
       name: "智服工单云平台",
       description:
-        "我和另外一名前端经理从零主导构建了基于Vue3技术栈的SaaS级智能客服系统，全面负责前端架构设计和工单核心模块开发。项目采用Vue3+TypeScript+Vite技术方案替代传统Vue2，设计分层模块化架构：基础服务层封装权限控制；业务组件层开发40+高复用组件（如动态表单/高级搜索）。工单核心层解耦为三大模块（表单命令/状态机/数据看板）。在全栈能力延伸方面，运用Nuxt.js实现服务端渲染看板模块，将首屏加载时间优化至0.9秒。工单模块核心技术包括：开发基于Vue3 Reactive API的动态表单引擎，支持20+字段类型及规则驱动渲染（如紧急工单自动触发SLA倒计时）；使用Pinia设计多层状态树管理工单全生命周期（8种状态），实现可视化状态流引擎；针对万级工单数据实施虚拟滚动+分片加载方案，使列表渲染性能提升；开发复合查询构建器支持15+条件组合搜索并实现URL参数持久化；通过Nuxt.js+ECharts构建SSR数据看板，实现工单响应热力图、客服饱和度环形图。",
+        "我和另外一名前端经理从零主导构建了基于Vue3技术栈的SaaS级智能客服系统，全面负责前端架构设计和工单核心模块开发。项目采用Vue3+TypeScript+Vite技术方案替代传统Vue2，设计分层模块化架构：基础服务层封装权限控制；业务组件层开发40+高复用业务组件（如动态表单/高级搜索）。工单核心层解耦为三大模块（表单命令/状态机/数据看板）。在全栈能力延伸方面，运用Nuxt.js实现服务端渲染看板模块，将首屏加载时间优化至0.9秒。工单模块核心技术包括：开发基于Vue3 Reactive API的动态表单引擎，支持20+字段类型及规则驱动渲染（如紧急工单自动触发SLA倒计时）；使用Pinia设计多层状态树管理工单全生命周期（8种状态），实现可视化状态流引擎；针对万级工单数据实施虚拟滚动+分片加载方案，使列表渲染性能提升；开发复合查询构建器支持15+条件组合搜索并实现URL参数持久化；通过Nuxt.js+ECharts构建SSR数据看板，实现工单响应热力图、客服饱和度环形图。",
       technologies: [
         "Vue3",
         "TypeScript",
@@ -397,6 +399,8 @@ export const resumeConfig: ResumeConfig = {
         "15+条件组合搜索构建器",
         "SSR数据看板实现工单响应热力图",
       ],
+      hasDetails: true,
+      detailId: "智服工单云平台",
     },
     {
       name: "模板化网站定制系统",
@@ -413,6 +417,8 @@ export const resumeConfig: ResumeConfig = {
         "PC端和移动端适配",
         "在长春公司试运营成功",
       ],
+      hasDetails: true,
+      detailId: "模板化网站定制系统",
     },
     {
       name: "认证审核统计系统",
@@ -429,6 +435,8 @@ export const resumeConfig: ResumeConfig = {
         "自动化财务款项整理",
         "极大缩短计调安排工作量",
       ],
+      hasDetails: true,
+      detailId: "认证审核统计系统",
     },
     {
       name: "UDESK工单系统",

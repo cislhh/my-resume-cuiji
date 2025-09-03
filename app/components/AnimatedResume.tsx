@@ -2,16 +2,35 @@
 /**
  * 动画组件
  */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { resumeConfig, SECTION_IDS } from '../../src/store/resumeConfig';
 import { useSectionContext } from './ClientLayout';
+import { ProjectDetailModal } from '../../src/components/ProjectDetailModal';
 import styles from '../page.module.css';
 
 const AnimatedResume = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   const { registerSection } = useSectionContext();
+  
+  // 项目详情弹窗状态
+  const [projectDetailVisible, setProjectDetailVisible] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+
+  // 处理项目点击
+  const handleProjectClick = (project: { hasDetails?: boolean; detailId?: string }) => {
+    if (project.hasDetails && project.detailId) {
+      setSelectedProjectId(project.detailId);
+      setProjectDetailVisible(true);
+    }
+  };
+
+  // 关闭项目详情弹窗
+  const handleCloseProjectDetail = () => {
+    setProjectDetailVisible(false);
+    setSelectedProjectId(null);
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -215,12 +234,23 @@ const AnimatedResume = () => {
               key={index} 
               id={`project-${index}`}
               ref={(el) => registerSection(`project-${index}`, el)}
-              className={styles.projectItem}
+              className={`${styles.projectItem} ${project.hasDetails ? styles.clickableProject : ''}`}
+              onClick={() => handleProjectClick(project)}
             >
               <div className={styles.projectHeader}>
-                <h4 className={styles.projectName}>{project.name}</h4>
-                <span className={styles.projectRole}>{project.role}</span>
-                <span className={styles.projectPeriod}>{project.startDate} - {project.endDate || '进行中'}</span>
+                <div className={styles.projectTitleRow}>
+                  <h4 className={styles.projectName}>{project.name}</h4>
+                  {project.hasDetails && (
+                    <div className={styles.detailButton}>
+                      <span className={styles.detailIcon}>👁️</span>
+                      <span className={styles.detailText}>查看详情</span>
+                    </div>
+                  )}
+                </div>
+                <div className={styles.projectMeta}>
+                  <span className={styles.projectRole}>{project.role}</span>
+                  <span className={styles.projectPeriod}>{project.startDate} - {project.endDate || '进行中'}</span>
+                </div>
               </div>
               <p className={styles.projectDescription}>{project.description}</p>
               <div className={styles.projectTech}>
@@ -302,6 +332,13 @@ const AnimatedResume = () => {
           </div>
         )}
       </section>
+
+      {/* 项目详情弹窗 */}
+      <ProjectDetailModal
+        visible={projectDetailVisible}
+        projectId={selectedProjectId}
+        onClose={handleCloseProjectDetail}
+      />
     </div>
   );
 };

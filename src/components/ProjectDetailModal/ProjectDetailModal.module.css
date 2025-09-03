@@ -1,0 +1,677 @@
+/* 项目详情模态框样式 - 全屏布局 */
+
+.projectDetailModal {
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.projectDetailModal :global(.ant-modal-content) {
+  height: 100vh;
+  border-radius: 0;
+  padding: 0;
+  background: #f5f5f5;
+}
+
+.projectDetailModal :global(.ant-modal-body) {
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.modalContent {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  transform: scale(1.1);
+}
+
+.mainContent {
+  display: flex;
+  height: 100vh;
+  flex: 1;
+}
+
+/* 左侧轮播图区域 - 占2/3 */
+.leftSection {
+  flex: 2;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 右侧内容区域 - 占1/3 */
+.rightSection {
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* 轮播图样式 */
+.projectCarousel {
+  height: 100%;
+}
+
+.carouselItem {
+  height: 100vh;
+  position: relative;
+}
+
+.carouselImageContainer {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+}
+
+.carouselImage {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.carouselOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 40px 30px 30px;
+  color: white;
+}
+
+.carouselInfo {
+  max-width: 600px;
+}
+
+.carouselTitle {
+  color: white !important;
+  margin-bottom: 8px !important;
+  font-size: 24px !important;
+}
+
+.carouselDescription {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.carouselDots {
+  bottom: 20px !important;
+}
+
+.carouselDots :global(.ant-carousel-dot) {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.carouselDots :global(.ant-carousel-dot-active) {
+  background: white !important;
+}
+
+.carouselArrow {
+  color: white;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carouselArrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+/* 占位图样式 */
+.placeholderImage {
+  height: 100vh;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderContent {
+  text-align: center;
+  color: #999;
+  font-size: 18px;
+}
+
+/* 右侧内容区域样式 */
+.detailsSection {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.techStackSection {
+  flex: 1;
+  padding: 30px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.projectHeader {
+  margin-bottom: 24px;
+}
+
+.projectTitle {
+  margin: 0 0 16px 0 !important;
+  color: #1890ff;
+  font-size: 28px !important;
+  font-weight: 600;
+}
+
+.projectActions {
+  margin-bottom: 20px;
+}
+
+.actionButton {
+  margin-right: 8px;
+}
+
+.projectInfo {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #1890ff;
+}
+
+.infoItem {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.infoItem:last-child {
+  margin-bottom: 0;
+}
+
+.infoItem strong {
+  margin-right: 8px;
+  color: #333;
+  min-width: 80px;
+}
+
+.projectOverview,
+.projectDescription,
+.projectFeatures,
+.projectResults {
+  margin-bottom: 24px;
+}
+
+.projectOverview h4,
+.projectDescription h4,
+.projectFeatures h4,
+.projectResults h4 {
+  color: #333;
+  margin-bottom: 12px !important;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overviewText,
+.descriptionText {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.featuresList,
+.resultsList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.featureItem,
+.resultItem {
+  margin-bottom: 8px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.featureItem:last-child,
+.resultItem:last-child {
+  margin-bottom: 0;
+}
+
+/* 技术栈区域样式 */
+.techStackSection h4 {
+  color: #333;
+  margin-bottom: 20px !important;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .leftSection {
+    flex: 1;
+    height: 50vh;
+  }
+
+  .rightSection {
+    flex: 1;
+    height: 50vh;
+  }
+
+  .carouselItem {
+    height: 50vh;
+  }
+
+  .placeholderImage {
+    height: 50vh;
+  }
+
+  .detailsSection,
+  .techStackSection {
+    padding: 20px;
+  }
+
+  .projectTitle {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .closeButton {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .carouselOverlay {
+    padding: 20px 15px 15px;
+  }
+
+  .carouselTitle {
+    font-size: 20px !important;
+  }
+
+  .carouselDescription {
+    font-size: 14px;
+  }
+
+  .detailsSection,
+  .techStackSection {
+    padding: 15px;
+  }
+
+  .projectTitle {
+    font-size: 20px !important;
+  }
+
+  .projectInfo {
+    padding: 12px;
+  }
+
+  .infoItem strong {
+    min-width: 70px;
+    font-size: 14px;
+  }
+
+  .projectOverview h4,
+  .projectDescription h4,
+  .projectFeatures h4,
+  .projectResults h4,
+  .techStackSection h4 {
+    font-size: 16px;
+  }
+
+  .overviewText,
+  .descriptionText {
+    font-size: 14px;
+  }
+
+  .featureItem,
+  .resultItem {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftSection {
+    height: 40vh;
+  }
+
+  .rightSection {
+    height: 60vh;
+  }
+
+  .carouselItem {
+    height: 40vh;
+  }
+
+  .placeholderImage {
+    height: 40vh;
+  }
+
+  .carouselOverlay {
+    padding: 15px 10px 10px;
+  }
+
+  .carouselTitle {
+    font-size: 18px !important;
+  }
+
+  .carouselDescription {
+    font-size: 12px;
+  }
+
+  .detailsSection,
+  .techStackSection {
+    padding: 12px;
+  }
+
+  .projectTitle {
+    font-size: 18px !important;
+  }
+
+  .projectInfo {
+    padding: 10px;
+  }
+
+  .infoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .infoItem strong {
+    min-width: auto;
+    margin-bottom: 2px;
+  }
+}
+
+/* 概述部分 */
+.overviewSection {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px !important;
+  color: #1890ff;
+}
+
+.sectionIcon {
+  font-size: 18px;
+}
+
+.overviewText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.descriptionText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.projectInfo {
+  margin-top: 20px;
+}
+
+.infoCard {
+  height: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.infoCard:hover {
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.1);
+}
+
+.infoCard :global(.ant-card-body) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.infoIcon {
+  font-size: 20px;
+  color: #1890ff;
+}
+
+/* 功能部分 */
+.featuresSection {
+  margin-bottom: 24px;
+}
+
+.featureCard {
+  height: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  border-color: #52c41a;
+  box-shadow: 0 2px 8px rgba(82, 196, 26, 0.1);
+}
+
+.featureCard :global(.ant-card-body) {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+}
+
+.featureIcon {
+  color: #52c41a;
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 挑战部分 */
+.challengesSection {
+  margin-bottom: 24px;
+}
+
+.challengeCard {
+  height: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.challengeCard:hover {
+  border-color: #faad14;
+  box-shadow: 0 2px 8px rgba(250, 173, 20, 0.1);
+}
+
+.challengeCard :global(.ant-card-body) {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+}
+
+.challengeIcon {
+  color: #faad14;
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 解决方案部分 */
+.solutionsSection {
+  margin-bottom: 24px;
+}
+
+.solutionCard {
+  height: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.solutionCard:hover {
+  border-color: #722ed1;
+  box-shadow: 0 2px 8px rgba(114, 46, 209, 0.1);
+}
+
+.solutionCard :global(.ant-card-body) {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+}
+
+.solutionIcon {
+  color: #722ed1;
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 成果部分 */
+.resultsSection {
+  margin-bottom: 24px;
+}
+
+.resultCard {
+  height: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.resultCard:hover {
+  border-color: #eb2f96;
+  box-shadow: 0 2px 8px rgba(235, 47, 150, 0.1);
+}
+
+.resultCard :global(.ant-card-body) {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+}
+
+.resultIcon {
+  color: #eb2f96;
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 职责部分 */
+.responsibilitiesSection {
+  margin-bottom: 24px;
+}
+
+.responsibilitiesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.responsibilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.responsibilityItem:last-child {
+  border-bottom: none;
+}
+
+.responsibilityItem::before {
+  content: "•";
+  color: #1890ff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 技术栈部分 */
+.techStackSection {
+  margin-bottom: 24px;
+}
+
+/* 截图部分 */
+.screenshotsSection {
+  margin-bottom: 24px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .modalHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .modalActions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .projectInfo {
+    margin-top: 16px;
+  }
+
+  .infoCard :global(.ant-card-body) {
+    padding: 12px;
+  }
+
+  .featureCard :global(.ant-card-body),
+  .challengeCard :global(.ant-card-body),
+  .solutionCard :global(.ant-card-body),
+  .resultCard :global(.ant-card-body) {
+    padding: 10px;
+  }
+}

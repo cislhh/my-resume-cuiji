@@ -1,0 +1,144 @@
+/* 技术栈图表样式 - 适配弹窗布局 */
+
+.techStackContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.chartWrapper {
+  flex: 1;
+  min-height: 200px;
+}
+
+.chart {
+  width: 100%;
+  height: 200px;
+}
+
+.categoryStats {
+  flex: 0 0 auto;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.categoryTitle {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryItem {
+  background: white;
+  border-radius: 6px;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.categoryColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.categoryName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.categoryPercentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1890ff;
+}
+
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.techItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.techName {
+  color: #666;
+}
+
+.techPercentage {
+  color: #999;
+  font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .techStackContainer {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .categoryStats {
+    flex: none;
+    width: 100%;
+  }
+
+  .chart {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chart {
+    height: 250px;
+  }
+
+  .categoryStats {
+    padding: 12px;
+  }
+
+  .categoryItem {
+    padding: 10px;
+  }
+
+  .categoryHeader {
+    gap: 6px;
+  }
+
+  .categoryName {
+    font-size: 13px;
+  }
+
+  .categoryPercentage {
+    font-size: 13px;
+  }
+
+  .techItem {
+    font-size: 11px;
+  }
+}
